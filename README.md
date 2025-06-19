@@ -30,7 +30,7 @@ Built with **React**, **Node.js/Express**, **MongoDB**, and **TypeScript**, it's
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/book-tracker-app.git
+git clone https://github.com/ErdagEge/book-tracker-app.git
 cd book-tracker-app
 ```
 

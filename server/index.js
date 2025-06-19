@@ -2,12 +2,14 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import booksRouter from './routes/books.js';
 
 dotenv.config();
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/api/books', booksRouter);
 
 app.get('/api/test', (req, res) => {
   res.send('Backend is working!');

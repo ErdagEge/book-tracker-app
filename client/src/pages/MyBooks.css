@@ -1,9 +1,58 @@
-.mybooks-container {
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
+.my-books-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
 }
 
-.mybooks-title {
-  font-size: 2rem;
-  color: #2c3e50;
+.books-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.book-card {
+  background: white;
+  border-radius: 6px;
+  padding: 1rem;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.book-card img {
+  width: 80px;
+  height: auto;
+  border-radius: 4px;
+}
+
+.review-snippet {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.actions {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.edit-btn,
+.delete-btn {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background-color: #3498db;
+  color: white;
+}
+
+.delete-btn {
+  background-color: #e74c3c;
+  color: white;
 }

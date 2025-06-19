@@ -1,9 +1,11 @@
 import './AddBook.css';
+import BookSearch from '../components/BooksSearch';
 
 const AddBook = () => {
   return (
     <div className="addbook-container">
-      <h1 className="addbook-title">Add Book</h1>
+      <h2>Add a new book</h2>
+      <BookSearch />
     </div>
   );
 };

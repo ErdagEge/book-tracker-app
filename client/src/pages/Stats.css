@@ -1,0 +1,9 @@
+.stats-container {
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.stats-title {
+  font-size: 2rem;
+  color: #2c3e50;
+}

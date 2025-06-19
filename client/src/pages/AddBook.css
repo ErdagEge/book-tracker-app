@@ -1,0 +1,9 @@
+.addbook-container {
+  padding: 2rem;
+  font-family: 'Arial', sans-serif;
+}
+
+.addbook-title {
+  font-size: 2rem;
+  color: #2c3e50;
+}

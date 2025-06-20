@@ -67,8 +67,8 @@ const MyBooks = () => {
 
 
   const handleDelete = async (id: string) => {
-    const confirm = window.confirm('Are you sure you want to delete this book?');
-    if (!confirm) return;
+    const confirmed = window.confirm('Are you sure you want to delete this book?');
+    if (!confirmed) return;
 
     try {
         const res = await fetch(`http://localhost:5000/api/books/${id}`, {

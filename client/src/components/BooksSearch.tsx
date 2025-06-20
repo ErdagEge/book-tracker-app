@@ -26,7 +26,15 @@ const BookSearch = () => {
         `https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}`
       );
       const data = await response.json();
-      const books = data.items.map((item: any) => ({
+      interface GoogleItem {
+        id: string;
+        volumeInfo: {
+          title: string;
+          authors?: string[];
+          imageLinks?: { thumbnail?: string };
+        };
+      }
+      const books = data.items.map((item: GoogleItem) => ({
         id: item.id,
         title: item.volumeInfo.title,
         authors: item.volumeInfo.authors || ['Unknown Author'],
@@ -48,7 +56,7 @@ const BookSearch = () => {
       thumbnail: book.thumbnail,
       startDate,
       endDate,
-      rating,
+      rating: rating === '' ? undefined : rating,
       review,
     };
 
@@ -119,7 +127,10 @@ const BookSearch = () => {
                             min="1"
                             max="5"
                             value={rating}
-                            onChange={(e) => setRating(parseInt(e.target.value))}
+                            onChange={(e) => {
+                                const value = e.target.value;
+                                setRating(value === '' ? '' : parseInt(value));
+                            }}
                         />
                     </label>
                     <label>

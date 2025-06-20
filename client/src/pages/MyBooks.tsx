@@ -44,7 +44,7 @@ const MyBooks = () => {
     try {
       const updated = {
         ...book,
-        rating: editRating,
+        rating: editRating === '' ? undefined : editRating,
         review: editReview,
       };
 
@@ -112,7 +112,10 @@ const MyBooks = () => {
                         min="1"
                         max="5"
                         value={editRating}
-                        onChange={(e) => setEditRating(Number(e.target.value))}
+                        onChange={(e) => {
+                        const value = e.target.value;
+                        setEditRating(value === '' ? '' : parseInt(value));
+                        }}
                     />
                     </label>
                     <label>

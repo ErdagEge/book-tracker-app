@@ -6,6 +6,7 @@ interface BookItem {
   title: string;
   authors: string[];
   thumbnail: string;
+  pageCount: number;
 }
 
 const BookSearch = () => {
@@ -32,6 +33,7 @@ const BookSearch = () => {
           title: string;
           authors?: string[];
           imageLinks?: { thumbnail?: string };
+          pageCount?: number;
         };
       }
       const books = data.items.map((item: GoogleItem) => ({
@@ -39,6 +41,7 @@ const BookSearch = () => {
         title: item.volumeInfo.title,
         authors: item.volumeInfo.authors || ['Unknown Author'],
         thumbnail: item.volumeInfo.imageLinks?.thumbnail || '',
+        pageCount: item.volumeInfo.pageCount ?? 0,
       }));
       setResults(books);
     } catch (err) {
@@ -54,6 +57,7 @@ const BookSearch = () => {
       title: book.title,
       authors: book.authors,
       thumbnail: book.thumbnail,
+      pageCount: book.pageCount,
       startDate,
       endDate,
       rating: rating === '' ? undefined : rating,

@@ -1,9 +1,17 @@
-.stats-container {
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
+.chart-container {
+  margin-top: 2rem;
 }
 
-.stats-title {
-  font-size: 2rem;
-  color: #2c3e50;
+.stat-cards {
+  display: flex;
+  gap: 2rem;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.stat-card {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }

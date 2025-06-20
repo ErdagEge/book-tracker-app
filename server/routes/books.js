@@ -9,7 +9,11 @@ router.post('/', async (req, res) => {
     await newBook.save();
     res.status(201).json(newBook);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to save book' });
+    if (err.name === 'ValidationError') {
+      res.status(400).json({ error: err.message });
+    } else {
+      res.status(500).json({ error: 'Failed to save book' });
+    }
   }
 });
 
@@ -38,11 +42,15 @@ router.put('/:id', async (req, res) => {
     const updatedBook = await UserBook.findByIdAndUpdate(
       req.params.id,
       req.body,
-      { new: true }
+      { new: true, runValidators: true }
     );
     res.json(updatedBook);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to update book' });
+    if (err.name === 'ValidationError') {
+      res.status(400).json({ error: err.message });
+    } else {
+      res.status(500).json({ error: 'Failed to update book' });
+    }
   }
 });
 

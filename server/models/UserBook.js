@@ -1,13 +1,26 @@
 import mongoose from 'mongoose';
 
 const UserBookSchema = new mongoose.Schema({
-  googleId: String,
-  title: String,
-  authors: [String],
+  googleId: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  authors: {
+    type: [String],
+    required: true,
+  },
   thumbnail: String,
   startDate: Date,
   endDate: Date,
-  rating: Number,
+  rating: {
+    type: Number,
+    min: 1,
+    max: 5,
+  },
   review: String,
 });
 

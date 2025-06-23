@@ -11,6 +11,7 @@ interface Book {
   endDate?: string;
   rating?: number;
   review?: string;
+  pageCount?: number;
 }
 
 const MyBooks = () => {
@@ -96,6 +97,7 @@ const MyBooks = () => {
             <div>
               <h3>{book.title}</h3>
               <p>{book.authors.join(', ')}</p>
+              <p><b>Pages:</b> {book.pageCount}</p>
               {book.startDate && <p><b>Start:</b> {book.startDate.split('T')[0]}</p>}
               {book.endDate && <p><b>Finish:</b> {book.endDate.split('T')[0]}</p>}
               {editingId === book._id ? (

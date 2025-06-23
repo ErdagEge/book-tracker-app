@@ -22,6 +22,7 @@ const UserBookSchema = new mongoose.Schema({
     max: 5,
   },
   review: String,
+  pageCount: Number,
 });
 
 export default mongoose.model('UserBook', UserBookSchema);

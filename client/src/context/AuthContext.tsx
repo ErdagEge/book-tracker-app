@@ -1,13 +1,13 @@
 import { createContext, useContext, useEffect, useState } from 'react';
 
 interface AuthContextType {
-  userId: string | null;
-  login: (userId: string, token: string) => void;
+  user: { id: string; email: string } | null;
+  login: (id: string, email: string, token: string) => void;
   logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType>({
-  userId: null,
+  user: null,
   login: () => {},
   logout: () => {},
 });
@@ -15,27 +15,32 @@ const AuthContext = createContext<AuthContextType>({
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userId, setUserId] = useState<string | null>(null);
+  const [user, setUser] = useState<{ id: string; email: string } | null>(null);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem('userId');
-    if (storedUser) setUserId(storedUser);
-  }, []);
+    useEffect(() => {
+    const storedId = localStorage.getItem('userId');
+    const storedEmail = localStorage.getItem('email');
+    if (storedId && storedEmail) {
+        setUser({ id: storedId, email: storedEmail });
+    }
+    }, []);
 
-  const login = (id: string, token: string) => {
+    const login = (id: string, email: string, token: string) => {
     localStorage.setItem('userId', id);
+    localStorage.setItem('email', email);
     localStorage.setItem('token', token);
-    setUserId(id);
-  };
+    setUser({ id, email });
+    };
 
-  const logout = () => {
+    const logout = () => {
     localStorage.removeItem('userId');
+    localStorage.removeItem('email');
     localStorage.removeItem('token');
-    setUserId(null);
-  };
+    setUser(null);
+    };
 
   return (
-    <AuthContext.Provider value={{ userId, login, logout }}>
+    <AuthContext.Provider value={{ user, login, logout }}>
       {children}
     </AuthContext.Provider>
   );

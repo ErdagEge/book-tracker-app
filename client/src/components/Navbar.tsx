@@ -1,16 +1,32 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Navbar.css';
 
 const Navbar = () => {
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
   return (
     <nav className="navbar">
-      <h1>📚 Book Tracker</h1>
-      <ul className="nav-links">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/books">My Books</Link></li>
-        <li><Link to="/add">Add Book</Link></li>
-        <li><Link to="/stats">Stats</Link></li>
-      </ul>
+      <Link to="/">Home</Link>
+      {user ? (
+        <>
+          <Link to="/books">My Library</Link>
+          <Link to="/stats">Stats</Link>
+          <span className="navbar-user">👤 {user.email}</span>
+          <button onClick={handleLogout}>Logout</button>
+        </>
+      ) : (
+        <>
+          <Link to="/login">Login</Link>
+          <Link to="/signup">Sign Up</Link>
+        </>
+      )}
     </nav>
   );
 };

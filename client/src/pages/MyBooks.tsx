@@ -51,7 +51,10 @@ const MyBooks = () => {
 
       const res = await fetch(`http://localhost:5000/api/books/${book._id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify(updated),
       });
 

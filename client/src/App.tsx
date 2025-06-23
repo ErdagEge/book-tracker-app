@@ -5,7 +5,7 @@ import MyBooks from './pages/MyBooks';
 import AddBook from './pages/AddBook';
 import Stats from './pages/Stats'; 
 import Login from './pages/Login';
-import Register from './pages/Register';
+import Signup from './pages/Signup';
 import { Routes, Route } from 'react-router-dom';
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
         <Route path="/add" element={<AddBook />} />
         <Route path="/stats" element={<Stats />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Signup />} />
         </Routes>
       </div>
     </>

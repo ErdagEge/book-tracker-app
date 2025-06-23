@@ -17,14 +17,17 @@ const Login = () => {
     try {
       const res = await fetch('http://localhost:5000/api/auth/login', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify({ email, password })
       });
 
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      login(data.token, data.userId);
+      login(data.userId, email, data.token);
 
       navigate('/books'); // redirect after login
     } catch (err: any) {

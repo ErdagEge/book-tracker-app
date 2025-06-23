@@ -1,11 +1,16 @@
 import express from 'express';
 import UserBook from '../models/UserBook.js';
+import verifyToken from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
+// All routes below require authentication
+router.use(verifyToken);
+
+// Create a new book (linked to logged-in user)
 router.post('/', async (req, res) => {
   try {
-    const newBook = new UserBook(req.body);
+    const newBook = new UserBook({ ...req.body, userId: req.userId });
     await newBook.save();
     res.status(201).json(newBook);
   } catch (err) {
@@ -17,33 +22,36 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Get only books that belong to the logged-in user
 router.get('/', async (req, res) => {
   try {
-    const books = await UserBook.find();
+    const books = await UserBook.find({ userId: req.userId });
     res.json(books);
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch books' });
   }
 });
 
-// DELETE /api/books/:id
+// Delete a book (only if it belongs to the user)
 router.delete('/:id', async (req, res) => {
   try {
-    await UserBook.findByIdAndDelete(req.params.id);
+    const book = await UserBook.findOneAndDelete({ _id: req.params.id, userId: req.userId });
+    if (!book) return res.status(403).json({ error: 'Not allowed to delete this book' });
     res.status(200).json({ message: 'Book deleted' });
   } catch (err) {
     res.status(500).json({ error: 'Failed to delete book' });
   }
 });
 
-// PUT /api/books/:id
+// Update a book (only if it belongs to the user)
 router.put('/:id', async (req, res) => {
   try {
-    const updatedBook = await UserBook.findByIdAndUpdate(
-      req.params.id,
+    const updatedBook = await UserBook.findOneAndUpdate(
+      { _id: req.params.id, userId: req.userId },
       req.body,
       { new: true, runValidators: true }
     );
+    if (!updatedBook) return res.status(403).json({ error: 'Not allowed to update this book' });
     res.json(updatedBook);
   } catch (err) {
     if (err.name === 'ValidationError') {
@@ -53,6 +61,5 @@ router.put('/:id', async (req, res) => {
     }
   }
 });
-
 
 export default router;

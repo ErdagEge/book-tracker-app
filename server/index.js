@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import bookRoutes from './routes/books.js';
-import authRoutes from './routes/auth.js'; // <- New
+import authRoutes from './routes/auth.js';
 
 dotenv.config();
 const app = express();

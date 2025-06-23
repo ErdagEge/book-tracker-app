@@ -7,7 +7,7 @@ const router = express.Router();
 const JWT_SECRET = 'supersecretkey'; // Replace with env variable in production
 
 // Register Route
-router.post('/register', async (req, res) => {
+router.post('/signup', async (req, res) => {
   const { email, password } = req.body;
   try {
     const existingUser = await User.findOne({ email });
@@ -16,9 +16,9 @@ router.post('/register', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ email, password: hashedPassword });
 
-    res.status(201).json({ message: 'User registered successfully' });
+    res.status(201).json({ message: 'User signed up successfully' });
   } catch (err) {
-    res.status(500).json({ message: 'Registration failed', error: err.message });
+    res.status(500).json({ message: 'Sign up failed', error: err.message });
   }
 });
 

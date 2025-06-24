@@ -1,28 +1,33 @@
 .navbar {
-  background-color: white;
-  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  padding: 1rem 2rem;
+  background-color: #f5f5f5;
+  border-bottom: 1px solid #ddd;
 }
 
-.navbar h1 {
+.navbar-title {
   font-size: 1.5rem;
-  color: var(--primary-color);
+  font-weight: bold;
 }
 
-.nav-links {
-  list-style: none;
+.navbar-links {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 1rem;
 }
 
-.nav-links li a {
-  color: var(--font-color);
-  font-weight: 500;
+.navbar-user {
+  font-style: italic;
+  color: #333;
 }
 
-.nav-links li a:hover {
-  color: var(--secondary-color);
+.navbar-button {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }

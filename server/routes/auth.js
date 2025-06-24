@@ -16,7 +16,9 @@ router.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ email, password: hashedPassword });
 
-    res.status(201).json({ message: 'User signed up successfully' });
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '2h' });
+
+    res.status(201).json({ token, userId: user._id });
   } catch (err) {
     res.status(500).json({ message: 'Sign up failed', error: err.message });
   }

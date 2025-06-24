@@ -38,7 +38,7 @@ const Stats = () => {
   }, []);
 
   // Compute stats here
-  const totalBooks = books.length;
+  //const totalBooks = books.length;
   const avgRating = books.length
     ? (books.reduce((sum, b) => sum + (b.rating ?? 0), 0) / books.length).toFixed(2)
     : 'N/A';

@@ -27,7 +27,11 @@ const Stats = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/books')
+    fetch('http://localhost:5000/api/books', {
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      }
+    })
       .then((res) => res.json())
       .then((data) => setBooks(data))
       .catch((err) => console.error('Error fetching stats:', err));

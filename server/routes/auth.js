@@ -2,9 +2,11 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/User.js';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const router = express.Router();
-const JWT_SECRET = 'supersecretkey'; // Replace with env variable in production
+const JWT_SECRET = process.env.JWT_SECRET;
 
 // Register Route
 router.post('/signup', async (req, res) => {
@@ -16,7 +18,9 @@ router.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
     const user = await User.create({ email, password: hashedPassword });
 
-    res.status(201).json({ message: 'User signed up successfully' });
+    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '2h' });
+
+    res.status(201).json({ token, userId: user._id });
   } catch (err) {
     res.status(500).json({ message: 'Sign up failed', error: err.message });
   }
@@ -32,7 +36,7 @@ router.post('/login', async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-    const token = jwt.sign({ userId: user._id }, JWT_SECRET, { expiresIn: '2h' });
+    const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '2h' });
 
     res.status(200).json({ token, userId: user._id });
   } catch (err) {

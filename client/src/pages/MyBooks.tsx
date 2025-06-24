@@ -86,6 +86,9 @@ useEffect(() => {
     try {
         const res = await fetch(`http://localhost:5000/api/books/${id}`, {
           method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
         if (!res.ok) throw new Error('Failed to delete');
 

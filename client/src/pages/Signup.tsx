@@ -17,9 +17,8 @@ const Signup = () => {
     try {
       const res = await fetch('http://localhost:5000/api/auth/signup', {
         method: 'POST',
-        headers: { 
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        headers: {
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({ email, password })
       });
@@ -27,7 +26,10 @@ const Signup = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      login(data.userId, email, data.token);
+      // merge conflict here. Review and fix later.
+      if (data.token) localStorage.setItem('token', data.token);
+      if (data.userId) localStorage.setItem('userId', data.userId);
+
       navigate('/books');
     } catch (err: any) {
       setError(err.message);

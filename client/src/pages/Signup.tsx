@@ -26,9 +26,7 @@ const Signup = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      // merge conflict here. Review and fix later.
-      if (data.token) localStorage.setItem('token', data.token);
-      if (data.userId) localStorage.setItem('userId', data.userId);
+      login(data.userId, email, data.token);
 
       navigate('/books');
     } catch (err: any) {

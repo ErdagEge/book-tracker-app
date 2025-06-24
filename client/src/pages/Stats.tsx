@@ -83,7 +83,7 @@ const Stats = () => {
       {
         label: 'Books Read',
         data: monthLabels.map((month) => booksPerMonth[month]),
-        backgroundColor: '#3498db',
+        backgroundColor: '#5D9CEC',
       },
     ],
   };
@@ -94,7 +94,7 @@ const Stats = () => {
       {
         label: 'Pages Read',
         data: monthLabels.map((month) => pagesPerMonth[month]),
-        backgroundColor: '#2ecc71',
+        backgroundColor: '#4DC0B5',
       },
     ],
   };
@@ -112,22 +112,28 @@ const Stats = () => {
 
   return (
     <div className="stats-container">
-      <h2>📊 Your Reading Stats</h2>
+      <h2>Your Reading Stats</h2>
+      <div className="summary-cards">
+        <div className="summary-card">📚 <strong>Total Books:</strong> {books.length}</div>
+        <div className="summary-card">⭐ <strong>Avg. Rating:</strong> {avgRating}</div>
+        <div className="summary-card">📖 <strong>Total Pages:</strong> {totalPages}</div>
+        <div className="summary-card">🧮 <strong>Pages/Book:</strong> {avgPages}</div>
+      </div>
 
-      <div className="stat-cards">
-        <div className="stat-card"><strong>Total Books:</strong> {totalBooks}</div>
-        <div className="stat-card"><strong>Average Rating:</strong> {avgRating}</div>
-        <div className="stat-card"><strong>Total Pages:</strong> {totalPages}</div>
-        <div className="stat-card"><strong>Avg. Pages per Book:</strong> {avgPages}</div>
-      </div>
-      
-      <div className="chart-container">
-        <h3>Books Read per Month</h3>
-        <Bar data={chartData} options={chartOptions} />
-      </div>
-      <div className="chart-container">
-        <h3>Pages Read per Month</h3>
-        <Bar data={chartDataPages} options={chartOptions} />
+      <div className="stats-grid">
+        <div className="chart-card">
+          <h3>Books Read Per Month</h3>
+          <div className="chart-wrapper">
+            <Bar data={chartData} options={chartOptions} />
+          </div>
+        </div>
+
+        <div className="chart-card">
+          <h3>Total Pages Per Month</h3>
+          <div className="chart-wrapper">
+            <Bar data={chartDataPages} options={chartOptions} />
+          </div>
+        </div>
       </div>
     </div>
   );

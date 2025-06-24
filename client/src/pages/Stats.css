@@ -1,17 +1,67 @@
-.chart-container {
-  margin-top: 2rem;
+.stats-container {
+  max-width: 960px;
+  margin: 2rem auto;
+  padding: 2rem;
+  color: #1a1a1a;
 }
 
-.stat-cards {
-  display: flex;
+.stats-container h2 {
+  font-family: 'Cormorant', serif;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.stats-grid {
+  display: grid;
   gap: 2rem;
-  margin-top: 1rem;
-  font-size: 1.2rem;
+  grid-template-columns: 1fr;
 }
 
-.stat-card {
-  background-color: #f9f9f9;
-  padding: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+.summary-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
 }
+
+.summary-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+
+.chart-card {
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease;
+}
+
+.chart-card:hover {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.chart-card h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.chart-wrapper {
+  height: 300px;
+}
+
+@media (max-width: 600px) {
+  .chart-wrapper {
+    height: 220px;
+  }
+}
+

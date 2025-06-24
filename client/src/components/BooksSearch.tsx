@@ -95,8 +95,8 @@ const BookSearch = () => {
   };
 
   return (
-    <div className="search-container">
-      <form onSubmit={handleSearch} className="search-form">
+    <div className="book-search-page container">
+      <form onSubmit={handleSearch} className="form-card">
         <input
           type="text"
           placeholder="Search for a book..."
@@ -108,14 +108,14 @@ const BookSearch = () => {
 
       {loading && <p>Loading...</p>}
 
-      <div className="search-results">
+      <div className="book-grid">
         {results.map((book) => (
-          <div key={book.id} className="book-card">
+          <div key={book.id} className="book-card elevated">
             {book.thumbnail && <img src={book.thumbnail} alt={book.title} />}
-            <div>
+            <div className='book-info'>
               <h3>{book.title}</h3>
               <p>{book.authors.join(', ')}</p>
-              <button onClick={() => setSelectedBook(book)}>Add to Library</button>
+              <button className="btn" onClick={() => setSelectedBook(book)}>Add to Library</button>
 
               {selectedBook?.id === book.id && (
                 <form
@@ -150,7 +150,7 @@ const BookSearch = () => {
                         Review:
                         <textarea value={review} onChange={(e) => setReview(e.target.value)} />
                     </label>
-                    <button type="submit">Save Book</button>
+                    <button className="btn primary" type="submit">Save Book</button>
                 </form>
             )}
 

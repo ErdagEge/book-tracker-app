@@ -1,34 +1,44 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import './Navbar.css';
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const { user, logout } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     logout();
+    navigate('/');
   };
 
   return (
     <nav className="navbar">
-      <Link to="/">Home</Link>
-
-      {user ? (
-        <>
-          <Link to="/add">Add Book</Link>
-          <Link to="/books">My Books</Link>
-          <Link to="/stats">Stats</Link>
-          <button onClick={logout}>Logout</button>
-        </>
-      ) : (
-        <>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Signup</Link>
-        </>
-      )}
+      <div className="navbar-left">
+        <span className="logo">📚 BookTracker</span>
+        {user && (
+          <>
+            <Link to="/add" className="nav-link">Add Book</Link>
+            <Link to="/books" className="nav-link">My Books</Link>
+            <Link to="/stats" className="nav-link">Stats</Link>
+          </>
+        )}
+      </div>
+      <div className="navbar-right">
+        {user ? (
+          <>
+            <span className="user-email">👤 {user.email}</span>
+            <button onClick={handleLogout} className="logout-btn">Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login" className="nav-link">Login</Link>
+            <Link to="/signup" className="nav-link">Sign Up</Link>
+          </>
+        )}
+      </div>
     </nav>
   );
 };
 
 export default Navbar;
+

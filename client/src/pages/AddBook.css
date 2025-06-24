@@ -1,9 +1,73 @@
 .addbook-container {
-  padding: 2rem;
-  font-family: 'Arial', sans-serif;
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 24px;
+  font-family: 'Inter', sans-serif;
 }
 
-.addbook-title {
-  font-size: 2rem;
-  color: #2c3e50;
+.search-section {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search-section input {
+  flex: 1;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.search-section button {
+  background-color: #e5ddde;
+  color: #222;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.search-section button:hover {
+  background-color: #d4c1c5;
+  cursor: pointer;
+}
+
+.book-result {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;
+}
+
+.book-result:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.book-result h3 {
+  margin: 0 0 6px;
+  font-size: 1.2rem;
+  color: #333;
+}
+
+.book-result p {
+  margin: 0 0 12px;
+  color: #666;
+}
+
+.book-result button {
+  background-color: #e5ddde;
+  color: #222;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.book-result button:hover {
+  background-color: #d4c1c5;
+  cursor: pointer;
 }

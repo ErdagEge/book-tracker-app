@@ -36,25 +36,27 @@ const Signup = () => {
 
   return (
     <div className="auth-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={e => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={e => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Sign Up</button>
-        {error && <p className="error">{error}</p>}
-      </form>
+      <div className="auth-card">
+        <h2>Sign Up</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={e => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit">Sign Up</button>
+          {error && <p>{error}</p>}
+        </form>
+      </div>
     </div>
   );
 };

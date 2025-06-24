@@ -7,16 +7,16 @@ Built with **React**, **Node.js**, **MongoDB**, and **TypeScript**, BookTracker 
 
 ## ✨ Features
 
-- 🔐 **User Accounts** — Sign up, log in, and manage your private book library
-- 🔍 **Book Search** — Search titles with the Google Books API
-- 📖 **Library Management** — Track your reading with:
+- 🔐 **User Accounts** - Sign up, log in, and manage your private book library
+- 🔍 **Book Search** - Search titles with the Google Books API
+- 📖 **Library Management** - Track your reading with:
   - Custom start/finish dates
   - Personal notes and star ratings
   - Optional page count tracking
-- 📊 **Statistics Dashboard** — Visualize books per month and total pages read
-- 🗂️ **Edit/Delete Entries** — Easily update or remove any book
-- 💾 **MongoDB Integration** — Data is stored per-user, securely in the cloud
-- 🎨 **Responsive UI** — Styled with modern CSS for a smooth experience
+- 📊 **Statistics Dashboard** - Visualize books per month and total pages read
+- 🗂️ **Edit/Delete Entries** - Easily update or remove any book
+- 💾 **MongoDB Integration** - Data is stored per-user, securely in the cloud
+- 🎨 **Responsive UI** - Styled with modern CSS for a smooth experience
 
 ---
 
@@ -123,7 +123,7 @@ Deployed on [Vercel](https://vercel.com)
 
 ## 📄 License
 
-This project is licensed under the **MIT License** — feel free to use, modify, and distribute it.
+This project is licensed under the **MIT License**. Feel free to use, modify, and distribute it.
 
 ---
 

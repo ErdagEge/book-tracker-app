@@ -17,7 +17,7 @@ const Navbar: React.FC = () => {
       {user ? (
         <>
           <Link to="/add">Add Book</Link>
-          <Link to="/mybooks">My Books</Link>
+          <Link to="/books">My Books</Link>
           <Link to="/stats">Stats</Link>
           <button onClick={logout}>Logout</button>
         </>

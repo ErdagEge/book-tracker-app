@@ -9,7 +9,8 @@ const verifyToken = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.userId = decoded.id;
+    // Support tokens that store user ID under either "id" or "userId"
+    req.userId = decoded.userId || decoded.id;
     next();
   } catch (err) {
     res.status(401).json({ message: 'Invalid token' });

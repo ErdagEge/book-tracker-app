@@ -65,11 +65,17 @@ const BookSearch = () => {
     };
 
     try {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        alert('User not authenticated. Please log in.');
+        return;
+      }
+
       const response = await fetch('http://localhost:5000/api/books', {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${'token'}`
         },
         body: JSON.stringify(bookData),
       });

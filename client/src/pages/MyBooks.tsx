@@ -22,18 +22,27 @@ const MyBooks = () => {
   const [editReview, setEditReview] = useState('');
 
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/books')
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error fetching books:', err);
-        setLoading(false);
-      });
-  }, []);
+useEffect(() => {
+  fetch('http://localhost:5000/api/books', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error('Unauthorized');
+      return res.json();
+    })
+    .then((data) => {
+      setBooks(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error('Error fetching books:', err);
+      setBooks([]); // fallback to empty list to avoid map() error
+      setLoading(false);
+    });
+}, []);
+
 
   const startEdit = (book: Book) => {
     setEditingId(book._id);

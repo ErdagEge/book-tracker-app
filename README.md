@@ -1,5 +1,5 @@
 
-**BookTracker** is a modern full-stack web application that helps you track your reading journey. Search for books via the Google Books API, log your progress, leave ratings and reviews, and visualize your stats — all in a clean, user-friendly interface.
+**BookTracker** is a modern full-stack web application that helps you track your reading journey. Search for books via the Google Books API, log your progress, leave ratings and reviews, and visualize your stats with a clean, user-friendly interface.
 
 Built with **React**, **Node.js**, **MongoDB**, and **TypeScript**, BookTracker supports **multi-user authentication**, **dynamic dashboards**, and **custom notes** for every book.
 

@@ -23,7 +23,7 @@ const MyBooks = () => {
 
 
 useEffect(() => {
-  fetch('http://localhost:5000/api/books', {
+  fetch('https://book-tracker-app-0ncf.onrender.com/api/books', {
     headers: {
       'Authorization': `Bearer ${localStorage.getItem('token')}`
     }
@@ -58,7 +58,7 @@ useEffect(() => {
         review: editReview,
       };
 
-      const res = await fetch(`http://localhost:5000/api/books/${book._id}`, {
+      const res = await fetch(`https://book-tracker-app-0ncf.onrender.com/api/books/${book._id}`, {
         method: 'PUT',
         headers: { 
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ useEffect(() => {
     if (!confirmed) return;
 
     try {
-        const res = await fetch(`http://localhost:5000/api/books/${id}`, {
+        const res = await fetch(`https://book-tracker-app-0ncf.onrender.com/api/books/${id}`, {
           method: 'DELETE',
           headers: {
             'Authorization': `Bearer ${localStorage.getItem('token')}`

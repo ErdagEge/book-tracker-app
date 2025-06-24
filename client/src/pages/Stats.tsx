@@ -27,7 +27,7 @@ const Stats = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/books', {
+    fetch('https://book-tracker-app-0ncf.onrender.com/api/books', {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

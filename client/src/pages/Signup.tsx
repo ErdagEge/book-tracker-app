@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import './Signup.css';
 
 const Signup = () => {
@@ -7,6 +8,7 @@ const Signup = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,8 +27,7 @@ const Signup = () => {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
 
-      localStorage.setItem('token', data.token);
-      localStorage.setItem('userId', data.userId);
+      login(data.userId, email, data.token);
       navigate('/books');
     } catch (err: any) {
       setError(err.message);

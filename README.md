@@ -1,27 +1,39 @@
-# 📚 BookTracker
 
-BookTracker is a full-stack web application that helps you track your personal reading history. You can search for books using the Google Books API, add them to your library with custom notes, and update or delete your entries anytime.
+**BookTracker** is a modern full-stack web application that helps you track your reading journey. Search for books via the Google Books API, log your progress, leave ratings and reviews, and visualize your stats with a clean, user-friendly interface.
 
-Built with **React**, **Node.js/Express**, **MongoDB**, and **TypeScript**, it's a clean, minimal CRUD project perfect for readers and developers alike.
+Built with **React**, **Node.js**, **MongoDB**, and **TypeScript**, BookTracker supports **multi-user authentication**, **dynamic dashboards**, and **custom notes** for every book.
 
 ---
 
 ## ✨ Features
 
-- 🔍 **Search books** using Google Books API
-- 📖 **Track reading progress** with start and finish dates
-- ⭐ **Rate and review** books you've read
-- 🗂️ **Edit or delete** book entries in your library
-- 📬 Stored in MongoDB, powered by a custom Express backend
+- 🔐 **User Accounts** - Sign up, log in, and manage your private book library
+- 🔍 **Book Search** - Search titles with the Google Books API
+- 📖 **Library Management** - Track your reading with:
+  - Custom start/finish dates
+  - Personal notes and star ratings
+  - Optional page count tracking
+- 📊 **Statistics Dashboard** - Visualize books per month and total pages read
+- 🗂️ **Edit/Delete Entries** - Easily update or remove any book
+- 💾 **MongoDB Integration** - Data is stored per-user, securely in the cloud
+- 🎨 **Responsive UI** - Styled with modern CSS for a smooth experience
 
 ---
 
 ## 🧰 Tech Stack
 
-- **Frontend:** React + Vite + TypeScript + CSS
-- **Backend:** Node.js + Express
-- **Database:** MongoDB Atlas
-- **API:** Google Books API
+### Frontend
+- [React](https://react.dev/)
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- CSS Modules
+
+### Backend
+- [Node.js](https://nodejs.org/)
+- [Express](https://expressjs.com/)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- JWT for authentication
+- Google Books API
 
 ---
 
@@ -41,14 +53,16 @@ cd book-tracker-app
 ```bash
 cd server
 npm install
-Create a .env file in the /server directory:
 ```
+
+Create a .env file in the /server directory:
 
 ```bash
 MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
 ```
 
-Start the backend:
+Start the server:
 
 ```bash
 npm run dev
@@ -56,13 +70,20 @@ npm run dev
 
 ---
 
-### 3. Set up the client
+### 3. Set up the frontend
 
 ```bash
 cd ../client
 npm install
 npm run dev
 ```
+
+To run locally:
+
+```bash
+npm run dev
+```
+
 Visit http://localhost:5173 to use the app.
 
 ---
@@ -71,21 +92,55 @@ Visit http://localhost:5173 to use the app.
 
 ```bash
 book-tracker-app/
-├── client/       # React frontend
-└── server/       # Express backend + MongoDB models
+├── client/        # React frontend (Vite)
+│   ├── components/
+│   ├── pages/
+│   └── styles/
+└── server/        # Express backend + MongoDB models + auth
 ```
 
 ---
 
-### 📦 Future Improvements
-- 📊 Stats dashboard (pages read, average rating, etc.)
-- 🔐 User authentication and multi-user support
-- 🌙 Dark mode and responsive mobile layout
-- 📁 Export/import reading history
+### 🧪 Testing
+
+Basic testing written with Vitest (optional). To run tests:
+```
+cd client
+npm run test
+```
 
 ---
 
-### 📄 License
-MIT License. Feel free to use, remix, and expand!
+## 📦 Deployment
+
+### Backend  
+Deployed on [Render](https://render.com)
+
+### Frontend  
+Deployed on [Vercel](https://vercel.com)
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**. Feel free to use, modify, and distribute it.
+
+---
+
+## 🙌 Acknowledgements
+
+- [Google Books API](https://developers.google.com/books)
+- [Chart.js](https://www.chartjs.org/) + [react-chartjs-2](https://react-chartjs-2.js.org/)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+- [Vite](https://vitejs.dev/)
+- [Render](https://render.com)
+- [Vercel](https://vercel.com)
+
+---
+
+## 🌐 Try It Out!
+
+**👉 [Live App](https://book-tracker-web-app.vercel.app/)** — give it a try!
+
 
 

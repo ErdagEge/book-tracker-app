@@ -22,18 +22,27 @@ const MyBooks = () => {
   const [editReview, setEditReview] = useState('');
 
 
-  useEffect(() => {
-    fetch('http://localhost:5000/api/books')
-      .then((res) => res.json())
-      .then((data) => {
-        setBooks(data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.error('Error fetching books:', err);
-        setLoading(false);
-      });
-  }, []);
+useEffect(() => {
+  fetch('https://book-tracker-app-0ncf.onrender.com/api/books', {
+    headers: {
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
+    }
+  })
+    .then((res) => {
+      if (!res.ok) throw new Error('Unauthorized');
+      return res.json();
+    })
+    .then((data) => {
+      setBooks(data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      console.error('Error fetching books:', err);
+      setBooks([]); // fallback to empty list to avoid map() error
+      setLoading(false);
+    });
+}, []);
+
 
   const startEdit = (book: Book) => {
     setEditingId(book._id);
@@ -49,9 +58,12 @@ const MyBooks = () => {
         review: editReview,
       };
 
-      const res = await fetch(`http://localhost:5000/api/books/${book._id}`, {
+      const res = await fetch(`https://book-tracker-app-0ncf.onrender.com/api/books/${book._id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
         body: JSON.stringify(updated),
       });
 
@@ -72,8 +84,11 @@ const MyBooks = () => {
     if (!confirmed) return;
 
     try {
-        const res = await fetch(`http://localhost:5000/api/books/${id}`, {
+        const res = await fetch(`https://book-tracker-app-0ncf.onrender.com/api/books/${id}`, {
           method: 'DELETE',
+          headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
         });
         if (!res.ok) throw new Error('Failed to delete');
 

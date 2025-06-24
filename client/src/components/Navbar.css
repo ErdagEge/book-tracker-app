@@ -1,28 +1,75 @@
 .navbar {
-  background-color: white;
-  padding: 1rem 2rem;
+  background-color: #d9dfe9;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  padding: 16px 48px;
+  font-family: 'Inter', sans-serif;
+
+  /* 🔧 Wider container */
+  max-width: 1140px;
+  margin: 24px auto;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.navbar h1 {
-  font-size: 1.5rem;
-  color: var(--primary-color);
+.navbar:hover {
+  background-color: #cdd5e3;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
-.nav-links {
-  list-style: none;
+.navbar-left,
+.navbar-right {
   display: flex;
-  gap: 1.5rem;
+  align-items: center;
+  gap: 16px;
 }
 
-.nav-links li a {
-  color: var(--font-color);
+.logo {
+  font-weight: 700;
+  font-size: 20px;
+  color: #222;
+  margin-right: 24px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
   font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-.nav-links li a:hover {
-  color: var(--secondary-color);
+.nav-link:hover {
+  background-color: #c3cbd8; /* darker blue-gray */
+  color: #111;
+  text-decoration: none; /* ✨ no underline */
+  cursor: pointer;
+}
+
+.user-email {
+  font-size: 14px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.logout-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #e5ddde;
+  color: #222;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.logout-btn:hover {
+  background-color: #d4c1c5; /* slightly darker rose */
+  color: #000;
 }

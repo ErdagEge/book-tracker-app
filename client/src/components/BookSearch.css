@@ -1,37 +1,81 @@
-.search-container {
-  max-width: 800px;
-  margin: 0 auto;
+.book-search-page {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
 }
 
-.search-form {
-  display: flex;
-  gap: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-.search-form input {
-  flex: 1;
-  padding: 0.5rem;
-  font-size: 1rem;
-}
-
-.search-results {
+.form-card {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  background: var(--surface-1);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: var(--elevation-2);
+  margin-bottom: 2rem;
 }
 
-.book-card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  background: #fff;
-  padding: 1rem;
-  border-radius: 6px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+.form-card input {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  background: white;
+  font-family: var(--font-body);
 }
 
-.book-card img {
-  width: 80px;
-  height: auto;
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.book-card h3 {
+  font-family: 'Cormorant', serif; /* for book titles */
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+  color: #333;
+}
+
+.book-card p {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.3rem;
+  line-height: 1.4;
+}
+
+.book-card button {
+  margin-top: auto;
+  align-self: flex-start;
+  background-color: #3395d8;;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.book-card button:hover {
+  background-color: #2980b9;
+}
+
+.book-card:hover {
+  background: rgba(255, 255, 255, 0.9); /* less transparent on hover */
+  box-shadow: var(--elevation-3);
+}
+
+
+.book-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.book-card p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 1rem;
 }

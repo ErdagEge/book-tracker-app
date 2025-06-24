@@ -23,6 +23,12 @@ const UserBookSchema = new mongoose.Schema({
   },
   review: String,
   pageCount: Number,
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User'
+  },
+
 });
 
 export default mongoose.model('UserBook', UserBookSchema);

@@ -1,5 +1,5 @@
 .navbar {
-  background-color: #d9dfe9;
+  background-color: #faedcd;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,7 +15,7 @@
 }
 
 .navbar:hover {
-  background-color: #cdd5e3;
+  background-color: #f8e6b9;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
 }
 
@@ -43,7 +43,7 @@
 }
 
 .nav-link:hover {
-  background-color: #c3cbd8; /* darker blue-gray */
+  background-color: #c9b47f; /* darker blue-gray */
   color: #111;
   text-decoration: none; /* ✨ no underline */
   cursor: pointer;

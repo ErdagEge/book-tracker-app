@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './MyBooks.css';
+import StarRating from '../components/StarRating';
 
 interface Book {
   _id: string;
@@ -124,15 +125,10 @@ useEffect(() => {
                 >
                     <label>
                     Rating:
-                    <input
-                        type="number"
-                        min="1"
-                        max="5"
+                    <StarRating
                         value={editRating}
-                        onChange={(e) => {
-                        const value = e.target.value;
-                        setEditRating(value === '' ? '' : parseInt(value));
-                        }}
+                        onChange={(val) => setEditRating(val)}
+                        idPrefix={`edit-${book._id}`}
                     />
                     </label>
                     <label>

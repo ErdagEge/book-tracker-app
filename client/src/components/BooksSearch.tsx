@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './BookSearch.css';
+import StarRating from './StarRating';
 
 interface BookItem {
   id: string;
@@ -135,15 +136,10 @@ const BookSearch = () => {
                     </label>
                     <label>
                         Rating:
-                        <input
-                            type="number"
-                            min="1"
-                            max="5"
+                        <StarRating
                             value={rating}
-                            onChange={(e) => {
-                                const value = e.target.value;
-                                setRating(value === '' ? '' : parseInt(value));
-                            }}
+                            onChange={(val) => setRating(val)}
+                            idPrefix={`search-${book.id}`}
                         />
                     </label>
                     <label>

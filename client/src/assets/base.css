@@ -18,6 +18,11 @@
 
   --border-radius: 12px;
   --transition-fast: 0.2s ease-in-out;
+
+  /* Surface and elevation variables for consistent theming */
+  --surface-1: var(--color-white);
+  --elevation-2: 0 4px 12px rgba(0, 0, 0, 0.05);
+  --elevation-3: 0 6px 18px rgba(0, 0, 0, 0.08);
 }
 
 body {
